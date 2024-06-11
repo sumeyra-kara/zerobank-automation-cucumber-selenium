@@ -5,7 +5,6 @@ Feature: account activity functionality
     When user clicks on the signin menu
     And user enters valid credentials and clicks on the sign in button
 
-
   Scenario: account activity test with account menu
     When user clicks Account Activity
     And verify the title should be "Zero - Account Activity"
@@ -17,7 +16,6 @@ Feature: account activity functionality
       | Loan        |
       | Credit Card |
       | Brokerage   |
-
 
   Scenario: account activity test with header
     When user clicks Account Activity
