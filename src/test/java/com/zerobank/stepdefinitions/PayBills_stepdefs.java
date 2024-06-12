@@ -4,9 +4,19 @@ import com.zerobank.pages.BasePage;
 import com.zerobank.pages.LoginPage;
 import com.zerobank.pages.OnlineBankingPage;
 import com.zerobank.pages.PayBillsPage;
+import com.zerobank.utilities.BrowserUtils;
+import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import javax.sql.rowset.BaseRowSet;
+import java.time.Duration;
 
 public class PayBills_stepdefs {
     BasePage basePage=new LoginPage();
@@ -22,6 +32,7 @@ public class PayBills_stepdefs {
     @When("user enters {string} amount {string} date {string} description and clicks on the pay button")
     public void user_enters_amount_date_description_and_clicks_on_the_pay_button(String amount, String date, String description) {
         payBillsPage.pay(amount,date,description);
+        BrowserUtils.waitFor(2);
     }
     @Then("verify that user can see message {string}")
     public void verify_that_user_can_see_message(String message) {
@@ -31,6 +42,21 @@ public class PayBills_stepdefs {
 
     @Then("verify that user can see negative message {string}")
     public void verifyThatUserCanSeeNegativeMessage(String message) {
-        Assert.assertTrue(payBillsPage.alertNegativeMessage.getText().contains(message));
+        if (payBillsPage.dateInput.getText()==null){
+
+            String actualMessage = payBillsPage.dateInput.getAttribute("validationMessage");
+            System.out.println("actualMessage = " + actualMessage);
+            Assert.assertEquals(message,actualMessage);
+
+
+        }else if (payBillsPage.amountInput.getText()==null){
+            String actual = payBillsPage.amountInput.getAttribute("validationMessage");
+            System.out.println("actual = " + actual);
+            Assert.assertEquals(message,actual);
+
+        }
+
+
+
     }
 }

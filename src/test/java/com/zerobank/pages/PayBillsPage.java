@@ -30,7 +30,7 @@ public class PayBillsPage extends BasePage{
     @FindBy(xpath = "//div[@id='alert_content']/span")
     public WebElement alertMessage;
 
-    @FindBy(xpath = "//*[text()='Fülle dieses Feld aus.']") //********???????
+    @FindBy(xpath = "//div[@id='alert_content']") //********???????
     public WebElement alertNegativeMessage;
 
 

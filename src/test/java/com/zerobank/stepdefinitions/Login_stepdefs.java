@@ -67,5 +67,9 @@ public class Login_stepdefs {
     }
 
 
-
+    @Then("user clicks on the log out")
+    public void userClicksOnTheLogOut() {
+        basePage.usernameName.click();
+        basePage.logoutInput.click();
+    }
 }

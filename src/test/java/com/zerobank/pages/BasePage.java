@@ -20,5 +20,14 @@ public abstract class BasePage {
     @FindBy(xpath = "//a[@id='online-banking']")
     public WebElement moreServicesForOnlineBanking;
 
+    @FindBy(xpath = "(//a[@class='dropdown-toggle'])[2]")
+    public WebElement usernameName;
+
+    @FindBy(xpath = "//a[@id='logout_link']")
+    public WebElement logoutInput;
+
+
+
+
 
 }
