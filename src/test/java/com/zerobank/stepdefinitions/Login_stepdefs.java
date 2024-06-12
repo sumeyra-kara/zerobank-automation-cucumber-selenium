@@ -16,12 +16,12 @@ public class Login_stepdefs {
     @Given("user is on the home page")
     public void user_is_on_the_home_page() {
         Driver.getDriver().get(ConfigReader.get("url"));
-
     }
 
     @When("user clicks on the signin menu")
     public void user_clicks_on_the_signin_menu() {
-        basePage.signinMenu.click();
+       // basePage.signinMenu.click(); // normal locate uzerinden
+        basePage.clickSigninBtn(); // private olan locate'i methoda alip methodu cagirirsak
     }
 
     @When("user enters valid credentials and clicks on the sign in button")

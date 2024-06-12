@@ -40,23 +40,39 @@ public class PayBills_stepdefs {
         System.out.println("payBillsPage.alertMessage.getText() = " + payBillsPage.alertMessage.getText());
     }
 
-    @Then("verify that user can see negative message {string}")
+    /*@Then("verify that user can see negative message {string}")
     public void verifyThatUserCanSeeNegativeMessage(String message) {
-        if (payBillsPage.dateInput.getText()==null){
 
+        if (payBillsPage.dateInput.getText()==null){
             String actualMessage = payBillsPage.dateInput.getAttribute("validationMessage");
             System.out.println("actualMessage = " + actualMessage);
             Assert.assertEquals(message,actualMessage);
-
 
         }else if (payBillsPage.amountInput.getText()==null){
             String actual = payBillsPage.amountInput.getAttribute("validationMessage");
             System.out.println("actual = " + actual);
             Assert.assertEquals(message,actual);
-
         }
-
-
-
     }
+
+     */
+    @Then("verify that user can see negative message {string} {string} amount {string} date")
+    public void verify_that_user_can_see_negative_message_amount_date(String message, String amount, String date) {
+        if (date.isEmpty()){
+            String actualMessage = payBillsPage.dateInput.getAttribute("validationMessage");
+            Assert.assertEquals(message,actualMessage);
+
+        }else if (amount.isEmpty()){
+            String actual = payBillsPage.amountInput.getAttribute("validationMessage");
+            Assert.assertEquals(message,actual);
+
+        } else if ((date.isEmpty())&(amount.isEmpty())) {
+            String validationMessage = payBillsPage.amountInput.getAttribute("validationMessage");
+            Assert.assertEquals(message,validationMessage);
+        }
+        //System.out.println("date = " + date);
+        //System.out.println("amount = " + amount);
+    }
+
+
 }

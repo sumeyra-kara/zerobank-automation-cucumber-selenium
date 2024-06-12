@@ -22,9 +22,11 @@ Feature: Pay Bills functionality
   @wip
   Scenario Outline: pay bills negative test
     When user enters "<amount>" amount "<date>" date "<description>" description and clicks on the pay button
-    Then verify that user can see negative message "Fülle dieses Feld aus."
+    #Then verify that user can see negative message "Fülle dieses Feld aus."
+    Then verify that user can see negative message "Fülle dieses Feld aus." "<amount>" amount "<date>" date
     Then user clicks on the log out
     Examples:
       | amount | date       | description  |
       | 33     |            | credit carte |
       |        | 2024-05-02 | credit carte |
+      |        |            | credit carte |

@@ -1,5 +1,6 @@
 package com.zerobank.pages;
 
+import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,7 +12,11 @@ public abstract class BasePage {
     }
 
     @FindBy(xpath = "//button[@id='signin_button']")
-    public WebElement signinMenu;
+    private WebElement signinMenu;
+
+    public void clickSigninBtn(){
+        BrowserUtils.clickWithJS(signinMenu);
+    }
 
     @FindBy(xpath = "(//a[@class='dropdown-toggle'])[2]")
     public WebElement accountNameInput;

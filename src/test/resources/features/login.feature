@@ -1,4 +1,5 @@
-Feature: login functionality
+@regression
+Feature: login Functionality
   As a user, I should be able to login
 
   Background: Login menu
